@@ -37,7 +37,7 @@ class BERTClassifier(nn.Module):
     def __init__(self,
                  bert,
                  hidden_size=768,
-                 num_classes=11,  ##클래스 수 조정
+                 num_classes=11,  # 클래스 수 조정
                  dr_rate=None,
                  params=None):
         super(BERTClassifier, self).__init__()

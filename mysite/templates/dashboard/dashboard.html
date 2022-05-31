@@ -1,48 +1,43 @@
 {% extends "base.html" %}
 {% load static %}
+{% block head %}
+<script type="text/javascript" src="{% static 'js/radar.js' %}"> var datas = {{ datas }} </script>
+{% endblock %}
 
 {% block content %}
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="card">
-                            <div class="container">
-                                <form method="POST" action="{% url 'emotion:predict' %}" enctype="multipart/form-data">
-                                    {% csrf_token %}
-                                    {{ form }}
-                                    <input type="submit" class="btn btn-primary col-12" value="제출">
-                                </form>
+                            <div class="card-header ">
+                                <h4 class="card-title">Today's Emotion Status</h4>
+                                <p class="card-category">The Change of Emotion</p>
                             </div>
-                            <div class="header">
-                                <h4 class="title"></h4>
-                                <p class="category"></p>
-                            </div>
-                            <div class="content">
-                                <img style="max-width: 100%; object-fit: cover;" src="{% static "foo.png" %}" alt=""/>
-                                <div class="footer">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Open
-                                        <i class="fa fa-circle text-danger"></i> Bounce
-                                        <i class="fa fa-circle text-warning"></i> Unsubscribe
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-clock-o"></i> Campaign sent 2 days ago
-                                    </div>
-                                </div>
+                            <div class="card-body ">
+                                <!-- 차트 그릴 캔버스 적용-->
+                                <canvas id="radar-chart" width="630" height="430"></canvas>
+                                <script type="text/javascript" src="{% static '/js/radar.js' %}"></script>
                             </div>
                         </div>
                     </div>
-
+                </div>
                     <div class="col-md-8">
+                        <!--
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">Users Behavior</h4>
                                 <p class="category">24 Hours performance</p>
                             </div>
                             <div class="content">
-                                <div id="chartHours" class="ct-chart"></div>
+                                <div class="card-header ">
+                                    <h4 class="card-title">Today's Emotion Status</h4>
+                                    <p class="card-category">The Change of Emotion</p>
+                                </div>
+                                <div class="card-body ">
+                                    <canvas id="radar-chart" width="630" height="430"></canvas>
+                                    <script type="text/javascript" src="{% static '/js/radar.js' %}"></script>
+                                </div>
                                 <div class="footer">
                                     <div class="legend">
                                         <i class="fa fa-circle text-info"></i> Open
@@ -55,6 +50,7 @@
                                     </div>
                                 </div>
                             </div>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -215,3 +211,4 @@
             </div>
         </div>
 {% endblock %}
+
